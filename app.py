@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 
@@ -73,8 +72,7 @@ if st.button("📊 开始计算"):
             st.warning(f"⚠️ {row['币种']} 行数据异常，跳过：{e}")
 
     if error_coins:
-        st.error("❌ 以下币种止损幅度超过 0.75%，请修改后再计算：
-" + "\n".join(error_coins))
+        st.error("❌ 以下币种止损幅度超过 0.75%，请修改后再计算：\n" + "\n".join(error_coins))
     elif results:
         df_result = pd.DataFrame(results)
         st.success("✅ 计算完成")
