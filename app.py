@@ -61,7 +61,7 @@ if st.button("📊 开始计算"):
                 "开仓价": entry_price,
                 "止损%": f"{stop_loss_pct:.2f}%",
                 "止损点位（USDT）": round(stop_loss_point, 6),  # ✅ 显示止损点位
-                "手续费": round(total_fee, 2),
+                "手续费": round(total_fee * 2, 2),
                 "最大亏损": round(risk_amount, 2),
                 "可开仓位（币）": round(position_size, 4),
                 "持仓价值": round(position_value, 2),
