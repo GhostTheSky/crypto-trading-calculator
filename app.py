@@ -48,8 +48,9 @@ if st.button("📊 开始计算"):
                 error_coins.append(f"{symbol}（止损 {stop_loss_pct}%）")
                 continue
 
-            stop_loss_usd = entry_price * (stop_loss_pct / 100)
-            total_risk_per_coin = stop_loss_usd + entry_price * fee_rate
+            # ✅ 新增：止损点位 = 开仓价 × 止损幅度
+            stop_loss_point = entry_price * (stop_loss_pct / 100)
+            total_risk_per_coin = stop_loss_point + entry_price * fee_rate
             position_size = risk_amount / total_risk_per_coin
             position_value = position_size * entry_price
             margin_used = position_value / leverage
@@ -59,7 +60,7 @@ if st.button("📊 开始计算"):
                 "币种": symbol,
                 "开仓价": entry_price,
                 "止损%": f"{stop_loss_pct:.2f}%",
-                "止损金额": round(stop_loss_usd, 2),
+                "止损点位（USDT）": round(stop_loss_point, 6),  # ✅ 显示止损点位
                 "手续费": round(total_fee, 2),
                 "最大亏损": round(risk_amount, 2),
                 "可开仓位（币）": round(position_size, 4),
