@@ -44,10 +44,6 @@ if st.button("📊 开始计算"):
             stop_loss_pct = float(row['止损幅度（%）'])
             leverage = float(row['杠杆倍数'])
 
-            if stop_loss_pct > 0.75:
-                error_coins.append(f"{symbol}（止损 {stop_loss_pct}%）")
-                continue
-
             # ✅ 新增：止损点位 = 开仓价 × 止损幅度
             stop_loss_point = entry_price * (stop_loss_pct / 100)
             total_risk_per_coin = stop_loss_point + entry_price * fee_rate
